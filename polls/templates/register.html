@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sign-up page</title>
+</head>
+<body>
+	<form name="myForm"
+	 onsubmit="return validateForm()" method="POST">
+		username: <input type="text" required name="username"><br><br>
+		password: <input type="password" required min="6" name="password"><br><br>
+		email: <input type="email" required name="email"><br><br>
+		
+		gender: <br>
+		<input type="radio" name="gender" value="Male">Male<br>
+		<input type="radio" name="gender" value="Female">Female<br><br>
+		<a href="login.html">confirm registration</a><br>
+		
+			
+		</select><br>
+		<input type="submit" value="Register">
+		<input type="reset">
+		
+	</form>
+	<script src="form.js"></script>
+
+</body>
+</html>
