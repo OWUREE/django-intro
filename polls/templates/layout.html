@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href={% static "file.css" %} />
+      {% if title %}
+        <title>SWM systems -- {{ title }}</title>
+      {% else%}
+        <title>SWM systems</title>
+      {% endif %}
+ 
+</head>
+<body>
+    {% block content %}
+    <h1>Content</h1>
+    {% endblock %}
+    {% block main_content %}
+    {% endblock %}
+    
+</body>
+</html>

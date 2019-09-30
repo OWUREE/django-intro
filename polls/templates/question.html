@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question</title>
+    </head>
+    <body>
+        <h1>Question</h1>
+        <a href="{% url 'register' %}">go to register</a><br>
+
+        <p>This is the index page</p>
+            <h5>{{ question.question_text }} <i>{{ question.pub_date }}</i></h5>
+    
+               {% for choice in question.choices.all %}
+              <p>{{ choice.choice_text}} <i> {{ choice.votes }}</i></p>
+              {% endfor %}
+    </body>
+</html> 
