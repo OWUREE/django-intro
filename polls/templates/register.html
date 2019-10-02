@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>sign-up page</title>
-</head>
-<body>
-	<form name="myForm"
-	 onsubmit="return validateForm()" method="POST">
-		username: <input type="text" required name="username"><br><br>
-		password: <input type="password" required min="6" name="password"><br><br>
-		email: <input type="email" required name="email"><br><br>
-		
-		gender: <br>
-		<input type="radio" name="gender" value="Male">Male<br>
-		<input type="radio" name="gender" value="Female">Female<br><br>
-		<a href="{% url 'index' %}">go to home</a><br>
-		
-			
-		</select><br>
-		<input type="submit" value="Register">
-		<input type="reset">
-		
-	</form>
-	<script src="form.js"></script>
+{% extends 'layout.html' %}
 
-</body>
-</html>
+{% block title %}
+Register
+{% endblock %}
+
+
+{% block content %}
+<div class="container col-6">
+	<form name="myForm" onsubmit="return validateForm()" method="POST">
+		<div class="form-group">
+			<label>Username:</label> 
+			<input class="form-control" type="text" required name="username">
+		</div>
+		<div class="form-group">
+			<label>Email:</label> 
+			<input class="form-control" type="email" required name="email">
+		</div>
+		<div class="form-group">
+			<label>Password:</label> 
+			<input class="form-control" type="password" required name="passwrd">
+		</div>
+		<div class="form-group">
+			<label>Gender:</label> 
+			<input class="form-control" type="radio" required name="gender" value="Male">
+			<input class="form-control" type="radio" required name="gender" value="Female">
+		</div>
+
+		<a href="{% url 'index' %}">go to home</a><br>
+
+		<input type="submit" value="Register" class="btn btn-primary">
+		<input type="reset" value="Reset" class="btn btn-danger">
+	</form>
+</div>	
+{% endblock %}
+
+{% block javascript %}
+	{{ block.super }}
+	<script src="form.js"></script>
+{% endblock %}

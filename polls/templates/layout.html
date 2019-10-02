@@ -1,21 +1,24 @@
 {% load static %}
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href={% static "file.css" %} />
-      {% if title %}
-        <title>SWM systems -- {{ title }}</title>
-      {% else%}
-        <title>SWM systems</title>
-      {% endif %}
- 
-</head>
-<body>
-    {% block content %}
-    <h1>Content</h1>
-    {% endblock %}
-    {% block main_content %}
+  <head>
+    <title>
+    {% block title %} Home {% endblock title %}
+    | SWM systems 
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block css %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     {% endblock %}
     
-</body>
+  </head>
+  <body>
+      {% block content %}
+      <h1>Content</h1>
+      {% endblock %}
+    
+    {% block javascript %}
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endblock %}
+  </body>
 </html>
