@@ -20,5 +20,7 @@ from polls.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('polls.urls'))
+    path('', include('polls.urls')),
+    path('', include('django.contrib.auth.urls')),
+
 ]

@@ -2,15 +2,20 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
-class Question(models.Model):
-    question_text = models.TextField(max_length=5000)
-    pub_date = models.DateTimeField(auto_now_add=True)
+class DustBin(models.Model):
+    PLASTIC = "P"
+    METAL = "M"
+    OTHERS = "O"
+    TYPES=(
+        (PLASTIC,"plastic"),
+        (METAL,"metal"),
+        (OTHERS,"others")
+    )
+    type = models.CharField (choices=TYPES, max_length=1)
+    level = models.IntegerField()
+    date_time = models.DateField(auto_now_add=True)
+    comment = models.TextField()
+    has_been_emptied = models.BooleanField(default=False)
 
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="choices")
-    choice_text = models.TextField()
-    votes = models.IntegerField(default=0)
-    posted_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.type}-{self.level}"

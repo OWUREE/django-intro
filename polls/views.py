@@ -1,20 +1,38 @@
-from django.shortcuts import render, get_object_or_404
-from polls.models import Question, Choice
+from django.shortcuts import render, redirect
+from polls.models import DustBin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
+
 
 def index(request):
-    all_questions = Question.objects.all()
-    return render(request, 'index.html', {'questions': all_questions})
+    if not request.user.is_authenticated:
+        return redirect('login')
+    current_plastic_level = DustBin.objects.filter(type=DustBin.PLASTIC).last().level
+    current_metal_level = DustBin.objects.filter(type=DustBin.METAL).last().level
+    current_other_level = DustBin.objects.filter(type=DustBin.OTHERS).last().level
+
+
+    return render(request, 'dashboard.html', {
+        "current_plastic_level":current_plastic_level,
+        "current_metal_level":current_metal_level,
+        "current_other_level":current_other_level})
 
 def register(request):
-    return render(request, 'register.html')
+    if request.user.is_authenticated:
+        return redirect('index')
+    if request.method == 'GET':
+        form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+    return render(request, 'register.html', {'form': form})   
 
 def layout(request):
     return render(request, 'layout.html')
 
 def about(request):
     return render(request, 'about.html')
-
-
-def question(request, id):
-    question = get_object_or_404(Question, id=id)
-    return render(request, 'question.html', {"question": question})
