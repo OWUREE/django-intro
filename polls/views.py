@@ -34,5 +34,11 @@ def register(request):
 def layout(request):
     return render(request, 'layout.html')
 
+def login(request):
+    return render(request, 'login.html')
+
 def about(request):
     return render(request, 'about.html')
+
+def logout(request):
+    return render(request, 'logout')

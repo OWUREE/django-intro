@@ -1,24 +1,28 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block title %}
   About
 {% endblock title %}
 {% block content %}
+
     <div class ="container">
       <span><h1>ABOUT OUR SYSTEM</h1></span>
-      <p> It all started some 3 months ago when my partner and i decided to come up with a <strong>smart waste management (SWM) system</strong> as our project topic.</p>
-      <p>The systems website is composed of 3 routes:
+      <p> It all started some 5 months ago when my partner and i decided to come up with a <strong>solid waste management (SWM) system</strong> as our project topic.</p>
+      <p>The systems website was designed using the python django framework, as well as the django API, and its composed of 5 major routes:
         <ul>
-          <li><b>the About Page.</b></li>
-          <li><b>the Sign-up Page.</b></li>
-          <li><b>the Login page.</b></li>
+          <li><b>Home Page/ Dashboard</b></li>
+          <li><b>About Page.</b></li>
+          <li><b>Register Page.</b></li>
+          <li><b>Login page.</b></li>
+          <li><b>Admin Page</b></li>
         </ul>
       </p>
     </div>
-    <div id="container col-6">
+    <div class="container">
         <span><h2>About page!!</h2></span>
         <p>
-           The <strong>waste management</strong> system was designed to tackle the issue of improper waste disposal, and waste of useful resources.
+           The <strong> solid swaste management</strong> system was designed to tackle the issue of improper waste disposal, and waste of useful resources.
         </p>
         <p><em>useful resources</em> in this case means such waste which could be reused but are rather thrown away.
         </p>
@@ -32,6 +36,9 @@
             <li>plastics.</li>
             <li>from others.</li>
           </ul>
+        <p><li>
+             To prevent pollution resulting from overflowing of waste bin, the system was incorporated with a level sensor.
+            </li></p>
        
         <p><li>
              Also, the system was able to optimize resources by conserving power, fuel etc.
@@ -42,6 +49,7 @@
             </li>
         </p></ul>
     </div>
+    <img src="{% static "image\clean-environment.jpg" %}" />
   
 {% endblock content %}
      
