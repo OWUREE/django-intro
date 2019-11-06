@@ -3,13 +3,14 @@ body{
     background-color: rgba(209, 158, 209 1.5);
     font-size: 0em;
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-container{
-    padding: 40px;
+    background-color: red;
 }
 span h1{
     color: darkred;
 }
 span h2{
     color: darkred;
+}
+.align-right {
+    text-align: right;
 }

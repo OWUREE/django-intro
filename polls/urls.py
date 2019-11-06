@@ -10,10 +10,8 @@ router.register(r'data', viewsets.DustBinViewSet)
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('logout/', views.logout, name="LOGOUT"),
     path('register/', views.register, name="register"),
-    path('login.html/', views.login, name="LOGIN"),
     path('layout/', views.layout, name="layout"),
-    path('about.html/', views.about, name="ABOUT" ),
+    path('about/', views.about, name="ABOUT" ),
     path('api/', include(router.urls)),
 ]

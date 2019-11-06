@@ -44,26 +44,41 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+          {% if request.user.is_authenticated %}
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="/">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
+          <!-- <li>
+              <a href="/user">
+                <i class="nc-icon nc-single-02"></i>
+                <p>User Profile</p>
+              </a>
+            </li> -->
+            <li>
+                <a href="/logout">
+                  <i class="nc-icon nc-diamond"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
+          {% else %}
           <li>
-            <a href="login.html">
+            <a href="/register">
               <i class="nc-icon nc-diamond"></i>
-              <p>Login</p>
+              <p>Register</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
-              <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
+              <a href="/login">
+                <i class="nc-icon nc-diamond"></i>
+                <p>Login</p>
+              </a>
+            </li>
+          {% endif %}
           <li>
-            <a href="./about.html">
+            <a href="/about">
               <i class="nc-icon nc-tile-56"></i>
               <p>About</p>
             </a>
@@ -101,7 +116,7 @@
 
         {% block content %}
         {% endblock %}
-        
+     {% block javascript %}   
   <!--   Core JS Files   -->
   <script src="/static/js/core/jquery.min.js"></script>
   <script src="/static/js/core/popper.min.js"></script>
@@ -121,6 +136,7 @@
       demo.initChartsPages();
     });
   </script>
+  {% endblock %}
 </body>
 
 </html>

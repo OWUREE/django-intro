@@ -1,8 +1,8 @@
+import json
 from django.shortcuts import render, redirect
 from polls.models import DustBin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-
 
 
 def index(request):
@@ -11,12 +11,18 @@ def index(request):
     current_plastic_level = DustBin.objects.filter(type=DustBin.PLASTIC).last().level
     current_metal_level = DustBin.objects.filter(type=DustBin.METAL).last().level
     current_other_level = DustBin.objects.filter(type=DustBin.OTHERS).last().level
-
+    metal_data = list(reversed(DustBin.objects.filter(type=DustBin.METAL).order_by('-id').values_list('level', flat=True)[:7]))
+    plastic_data = list(reversed(DustBin.objects.filter(type=DustBin.PLASTIC).order_by('-id').values_list('level', flat=True)[:7]))
+    other_data = list(reversed(DustBin.objects.filter(type=DustBin.OTHERS).order_by('-id').values_list('level', flat=True)[:7]))
 
     return render(request, 'dashboard.html', {
         "current_plastic_level":current_plastic_level,
         "current_metal_level":current_metal_level,
-        "current_other_level":current_other_level})
+        "current_other_level":current_other_level,
+        "plastic_data": json.dumps(plastic_data),
+        "metal_data": json.dumps(metal_data),
+        "other_data": json.dumps(other_data),
+        })
 
 def register(request):
     if request.user.is_authenticated:
@@ -34,11 +40,11 @@ def register(request):
 def layout(request):
     return render(request, 'layout.html')
 
-def login(request):
-    return render(request, 'login.html')
+# # def login(request):
+# #     return render(request, 'login.html')
 
 def about(request):
     return render(request, 'about.html')
 
-def logout(request):
-    return render(request, 'logout')
+# def logout(request):
+#     return render(request, 'logout')

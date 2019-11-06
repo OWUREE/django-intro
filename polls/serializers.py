@@ -9,6 +9,7 @@ class DustBinSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['type', 'level']
 
     def create(self, validated_data):
+        print("hello")
         level = validated_data.get('level', None)
         if level == 0:
             validated_data['comment'] = "Bin Empty"

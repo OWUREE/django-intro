@@ -32,7 +32,7 @@ demo = {
             pointHoverRadius: 3,
             fill: false,
             borderWidth: 3,
-            data: [70, 50, 55, 60, 75, 85, 60, 50, 90, 50]
+            data: plasticData
           },
           {
             label: "Metal Bin",
@@ -42,7 +42,7 @@ demo = {
             pointHoverRadius: 3,
             fill: false,
             borderWidth: 3,
-            data: [70, 80, 65, 90, 60, 70, 50, 55, 60, 50]
+            data: metalData
           },
           {
             label: "Other Bin",
@@ -52,7 +52,7 @@ demo = {
             pointHoverRadius: 3,
             fill: false,
             borderWidth: 3,
-            data: [50, 70, 60, 85, 50, 70, 55, 65, 80, 60]
+            data: otherData
           },
           
         ]
