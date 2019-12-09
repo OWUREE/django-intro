@@ -6,11 +6,16 @@ from django.contrib.auth import login
 
 
 def index(request):
+    def get_last_entry(type_):
+        if DustBin.objects.filter(type=type_).count() > 0:
+            return DustBin.objects.filter(type=DustBin.PLASTIC).last().level
+        return 0
+
     if not request.user.is_authenticated:
         return redirect('login')
-    current_plastic_level = DustBin.objects.filter(type=DustBin.PLASTIC).last().level
-    current_metal_level = DustBin.objects.filter(type=DustBin.METAL).last().level
-    current_other_level = DustBin.objects.filter(type=DustBin.OTHERS).last().level
+    current_plastic_level = get_last_entry(DustBin.PLASTIC)
+    current_metal_level = get_last_entry(DustBin.METAL)
+    current_other_level = get_last_entry(DustBin.OTHERS)
     metal_data = list(reversed(DustBin.objects.filter(type=DustBin.METAL).order_by('-id').values_list('level', flat=True)[:7]))
     plastic_data = list(reversed(DustBin.objects.filter(type=DustBin.PLASTIC).order_by('-id').values_list('level', flat=True)[:7]))
     other_data = list(reversed(DustBin.objects.filter(type=DustBin.OTHERS).order_by('-id').values_list('level', flat=True)[:7]))
